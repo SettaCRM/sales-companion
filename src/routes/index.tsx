@@ -1,26 +1,37 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "Setta CRM — The white-label CRM for service businesses" },
+      {
+        name: "description",
+        content:
+          "Setta CRM is the white-label CRM built for service businesses. Manage contacts, deals, and pipelines tailored to your industry.",
+      },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-center bg-background px-6 text-center">
+      <h1 className="text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
+        Setta CRM
+      </h1>
+      <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+        The white-label CRM for service businesses.
+      </p>
+      <div className="mt-8 flex gap-3">
+        <Button asChild variant="outline">
+          <Link to="/login">Log in</Link>
+        </Button>
+        <Button asChild>
+          <Link to="/signup">Sign up</Link>
+        </Button>
+      </div>
+    </main>
+  );
 }
